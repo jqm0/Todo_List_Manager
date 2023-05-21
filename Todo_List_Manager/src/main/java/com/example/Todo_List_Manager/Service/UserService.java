@@ -3,20 +3,21 @@ package com.example.Todo_List_Manager.Service;
 import com.example.Todo_List_Manager.Error.UserRegistrationException;
 import com.example.Todo_List_Manager.Model.User;
 import com.example.Todo_List_Manager.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class UserService {
-    private final UserRepository userRepository;
+    @Autowired
+     UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     public void registerUser(String username, String password) {
-        if (userRepository.existsByUsername(username)) {
-            throw new UserRegistrationException("Username is already taken");
-        }
+
         User user = new User();
         user.setName(username);
         user.setPassword(password);
