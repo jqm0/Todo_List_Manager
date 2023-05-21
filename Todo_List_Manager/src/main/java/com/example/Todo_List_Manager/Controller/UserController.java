@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -17,11 +18,10 @@ public class UserController {
     UserService userService;
     @PostMapping("api/register")
     public ResponseEntity<Void> saveAccount (@RequestBody GetUserRequest userRequestObject) {
-            createAccount(userRequestObject);
+            createUser(userRequestObject);
             return ResponseEntity.ok().build();
 
     }
-
 /*
     @GetMapping("/{userId}")
     public ResponseEntity<UserRegistrationDto> getUserById(@PathVariable Long userId) {
@@ -47,11 +47,16 @@ public class UserController {
     }
 
  */
-    public void createAccount(GetUserRequest getUserRequest){
+    public void createUser(GetUserRequest getUserRequest){
         User user = new User();
-        userService.registerUser(getUserRequest.getUserName() , getUserRequest.getPassword());
+        user.setName(getUserRequest.getUserName());
+        user.setPassword(getUserRequest.getPassword());
+        user.setIsActive(true);
+        user.setCreatedDate(new Date());
+        userService.registerUser(user);
 
     }
+
 
 }
 

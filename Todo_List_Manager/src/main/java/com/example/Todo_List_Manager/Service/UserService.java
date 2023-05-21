@@ -12,15 +12,8 @@ public class UserService {
     @Autowired
      UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
-    public void registerUser(String username, String password) {
-
-        User user = new User();
-        user.setName(username);
-        user.setPassword(password);
+    public void registerUser(User user) {
         userRepository.save(user);
     }
     public User getUserById(Long userId) {
