@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Setter
 @Data
 @Entity
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;

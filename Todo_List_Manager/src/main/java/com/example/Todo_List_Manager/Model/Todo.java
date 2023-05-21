@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Setter
 @Entity
 @Data
-public class Todo {
+public class Todo extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;
