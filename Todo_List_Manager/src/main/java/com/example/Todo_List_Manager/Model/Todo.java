@@ -17,5 +17,9 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;
 
-  
+    String title;
+    String description;
+    Boolean completed ;
+
+
 }
