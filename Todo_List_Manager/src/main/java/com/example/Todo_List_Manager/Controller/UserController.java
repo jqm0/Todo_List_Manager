@@ -22,31 +22,31 @@ public class UserController {
             return ResponseEntity.ok().build();
 
     }
-/*
+
     @GetMapping("/{userId}")
-    public ResponseEntity<UserRegistrationDto> getUserById(@PathVariable Long userId) {
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
         // Implementation for getting a user by ID API endpoint
         return null;
     }
+    /*
+        @GetMapping
+        public ResponseEntity<List<UserRegistrationDto>> getAllUsers() {
+            // Implementation for getting all users API endpoint
+            return null;
+        }
 
-    @GetMapping
-    public ResponseEntity<List<UserRegistrationDto>> getAllUsers() {
-        // Implementation for getting all users API endpoint
-        return null;
-    }
+        @PutMapping("/{userId}")
+        public ResponseEntity<Void> updateUser(@PathVariable Long userId, @RequestBody UserRegistrationDto userDto) {
+            // Implementation for updating a user API endpoint
+            return null;
+        }
 
-    @PutMapping("/{userId}")
-    public ResponseEntity<Void> updateUser(@PathVariable Long userId, @RequestBody UserRegistrationDto userDto) {
-        // Implementation for updating a user API endpoint
-        return null;
-    }
+        @DeleteMapping("/{userId}")
+        public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+           return null;
+        }
 
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
-       return null;
-    }
-
- */
+     */
     public void createUser(GetUserRequest getUserRequest){
         User user = new User();
         user.setName(getUserRequest.getUserName());
