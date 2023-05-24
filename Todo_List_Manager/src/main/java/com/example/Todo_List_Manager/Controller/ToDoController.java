@@ -1,5 +1,6 @@
 package com.example.Todo_List_Manager.Controller;
 
+import com.example.Todo_List_Manager.Error.TodoNotFoundException;
 import com.example.Todo_List_Manager.Model.Todo;
 import com.example.Todo_List_Manager.Model.User;
 import com.example.Todo_List_Manager.RequestObject.GetToDoRequest;
@@ -7,6 +8,7 @@ import com.example.Todo_List_Manager.RequestObject.GetUserRequest;
 import com.example.Todo_List_Manager.ResponeObject.GetToDoRespone;
 import com.example.Todo_List_Manager.Service.ToDoService;
 import com.example.Todo_List_Manager.Service.UserService;
+import com.example.Todo_List_Manager.UpdateRequest.UpdateTodoRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +35,7 @@ public class ToDoController {
     public ResponseEntity<String> updateTodoItem(@PathVariable Long todoId, @RequestBody UpdateTodoRequest request) {
         try {
             boolean completed = request.isCompleted();
-            todoService.updateTodoItem(todoId, completed);
+            toDoService.updateTodoItem(todoId, completed);
             return ResponseEntity.ok("Todo item updated successfully");
         } catch (TodoNotFoundException e) {
             return ResponseEntity.notFound().build();
@@ -48,7 +50,6 @@ public class ToDoController {
         todo.setIsActive(true);
         todo.setCreatedDate(new Date());
         toDoService.addItems(todo);
-
     }
     @GetMapping("api/todos")
     public List<Todo> getTodos () {
