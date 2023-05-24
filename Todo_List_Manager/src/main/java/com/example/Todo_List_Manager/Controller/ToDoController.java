@@ -29,7 +29,16 @@ public class ToDoController {
     public GetToDoRespone getTodoItemById(@PathVariable Long todoId){
         return toDoService.getItemById(todoId);
     }
-    public void updateTodoItem(){}
+    @PutMapping("/todos/{todoId}")
+    public ResponseEntity<String> updateTodoItem(@PathVariable Long todoId, @RequestBody UpdateTodoRequest request) {
+        try {
+            boolean completed = request.isCompleted();
+            todoService.updateTodoItem(todoId, completed);
+            return ResponseEntity.ok("Todo item updated successfully");
+        } catch (TodoNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
     public void deleteTodoItem(){}
     public void createTodoItem(GetToDoRequest getToDoRequest){
         Todo todo = new Todo();
