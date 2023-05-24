@@ -6,7 +6,7 @@ cd C:\Users\Lenovo\Documents\GitHub\Todo_List_Manager
 git add .
 
 # Commit the changes
-git commit -m "remove unused classes " --allow-empty
+git commit -m "remove unused code " --allow-empty
 
 # Push the changes to GitHub
 git push
