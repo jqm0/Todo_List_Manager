@@ -15,10 +15,11 @@ import java.util.Optional;
 public class ToDoService {
     @Autowired
     ToDoRepository toDoRepository;
-
+    // --------------- adding new item to todo list ----------------
     public void addItems(Todo todo) {
         toDoRepository.save(todo);
     }
+    ///  ---------- fetching and getting data from DB --------
     public List<Todo> getTodo(){
         return toDoRepository.findAll();
     }
@@ -35,6 +36,7 @@ public class ToDoService {
         return null;
 
     }
+    // ------------------- update TodoItem (Status) ------------------
     public void updateTodoItem(Long todoId, boolean completed) {
         Optional<Todo> optionalTodo = toDoRepository.findById(todoId);
         if (optionalTodo.isPresent()) {
@@ -45,7 +47,7 @@ public class ToDoService {
             throw new TodoNotFoundException("Todo item not found with ID: " + todoId);
         }
     }
-
+    // -------------- delete an item from todo list by its ID --------
     public void deleteTodoItem(Long todoId) {
         Optional<Todo> optionalTodo = toDoRepository.findById(todoId);
         if (optionalTodo.isPresent()) {

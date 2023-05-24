@@ -6,7 +6,7 @@ cd C:\Users\Lenovo\Documents\GitHub\Todo_List_Manager
 git add .
 
 # Commit the changes
-git commit -m "Final copy of the project " --allow-empty
+git commit -m "Add comments to the code and make clear for others " --allow-empty
 
 # Push the changes to GitHub
 git push
