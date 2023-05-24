@@ -35,15 +35,14 @@ public class ToDoService {
 
     }
     public void updateTodoItem(Long todoId, boolean completed) {
-        Optional<Todo> optionalTodoItem = toDoRepository.findById(todoId);
-        if (optionalTodoItem.isPresent()) {
-            Todo todoItem = optionalTodoItem.get();
-            todoItem.setCompleted(completed);
-            // You can update other properties of the todo item as needed
-
-            toDoRepository.save(todoItem);
+        Optional<Todo> optionalTodo = toDoRepository.findById(todoId);
+        if (optionalTodo.isPresent()) {
+            Todo todo = optionalTodo.get();
+            todo.setCompleted(completed);
+            toDoRepository.save(todo);
         } else {
             throw new TodoNotFoundException("Todo item not found with ID: " + todoId);
         }
     }
 }
+

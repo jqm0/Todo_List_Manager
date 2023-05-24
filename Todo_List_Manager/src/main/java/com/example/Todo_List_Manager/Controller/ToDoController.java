@@ -31,7 +31,7 @@ public class ToDoController {
     public GetToDoRespone getTodoItemById(@PathVariable Long todoId){
         return toDoService.getItemById(todoId);
     }
-    @PutMapping("/todos/{todoId}")
+    @PutMapping("/api/todos/{todoId}")
     public ResponseEntity<String> updateTodoItem(@PathVariable Long todoId, @RequestBody UpdateTodoRequest request) {
         try {
             boolean completed = request.isCompleted();
