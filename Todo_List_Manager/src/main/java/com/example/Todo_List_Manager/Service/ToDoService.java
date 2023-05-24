@@ -26,7 +26,7 @@ public class ToDoService {
         if(!optionalAccount.isEmpty())
         {
             Todo todo =  optionalAccount.get();
-            GetToDoRespone accountResponse = new GetToDoRespone(todo.getTitle(),todo.getDescription());
+            GetToDoRespone accountResponse = new GetToDoRespone(todo.getTitle(),todo.getDescription(),todo.getCompleted());
             return accountResponse;
         }
 

@@ -12,4 +12,5 @@ import lombok.Setter;
 public class GetToDoRespone {
     String title ;
     String description ;
+    boolean completed;
 }
