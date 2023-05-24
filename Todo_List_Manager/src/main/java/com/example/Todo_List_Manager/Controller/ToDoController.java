@@ -20,35 +20,12 @@ import java.util.List;
 public class ToDoController {
     @Autowired
     ToDoService toDoService;
+
     @PostMapping("/api/todos")
     public ResponseEntity<Void> saveAccount (@RequestBody GetToDoRequest getToDoRequest) {
         createTodoItem(getToDoRequest);
         return ResponseEntity.ok().build();
 
-    }
-    public void createTodoItem(){}
-    @RequestMapping("api/todos/{todoId}")
-    public GetToDoRespone getTodoItemById(@PathVariable Long todoId){
-        return toDoService.getItemById(todoId);
-    }
-    @PutMapping("/api/todos/{todoId}")
-    public ResponseEntity<String> updateTodoItem(@PathVariable Long todoId, @RequestBody UpdateTodoRequest request) {
-        try {
-            boolean completed = request.isCompleted();
-            toDoService.updateTodoItem(todoId, completed);
-            return ResponseEntity.ok("Todo item updated successfully");
-        } catch (TodoNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    @DeleteMapping("/api/todos/{todoId}")
-    public ResponseEntity<String> deleteTodoItem(@PathVariable Long todoId) {
-        try {
-            toDoService.deleteTodoItem(todoId);
-            return ResponseEntity.noContent().build();
-        } catch (TodoNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
     }
     public void createTodoItem(GetToDoRequest getToDoRequest){
         Todo todo = new Todo();
@@ -59,8 +36,37 @@ public class ToDoController {
         todo.setCreatedDate(new Date());
         toDoService.addItems(todo);
     }
+
+    // -------------------- To_Do Retrieval Part -------------------------- //
+    @RequestMapping("api/todos/{todoId}")
+    public GetToDoRespone getTodoItemById(@PathVariable Long todoId){
+        return toDoService.getItemById(todoId);
+    }
     @GetMapping("api/todos")
     public List<Todo> getTodos () {
         return toDoService.getTodo();
     }
+
+    // -------------------- To_Do Updating Part -------------------------- //
+    @PutMapping("/api/todos/{todoId}")
+    public ResponseEntity<String> updateTodoItem(@PathVariable Long todoId, @RequestBody UpdateTodoRequest request) {
+        try {
+            boolean completed = request.isCompleted();
+            toDoService.updateTodoItem(todoId, completed);
+            return ResponseEntity.ok("Todo item updated successfully");
+        } catch (TodoNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    // -------------------- To_Do Deletion Part -------------------------- //
+    @DeleteMapping("/api/todos/{todoId}")
+    public ResponseEntity<String> deleteTodoItem(@PathVariable Long todoId) {
+        try {
+            toDoService.deleteTodoItem(todoId);
+            return ResponseEntity.noContent().build();
+        } catch (TodoNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
