@@ -44,5 +44,15 @@ public class ToDoService {
             throw new TodoNotFoundException("Todo item not found with ID: " + todoId);
         }
     }
+
+    public void deleteTodoItem(Long todoId) {
+        Optional<Todo> optionalTodo = toDoRepository.findById(todoId);
+        if (optionalTodo.isPresent()) {
+            Todo todo = optionalTodo.get();
+            toDoRepository.delete(todo);
+        } else {
+            throw new TodoNotFoundException("Todo item not found with ID: " + todoId);
+        }
+    }
 }
 

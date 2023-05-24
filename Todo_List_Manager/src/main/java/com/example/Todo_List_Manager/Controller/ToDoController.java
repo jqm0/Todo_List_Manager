@@ -41,7 +41,15 @@ public class ToDoController {
             return ResponseEntity.notFound().build();
         }
     }
-    public void deleteTodoItem(){}
+    @DeleteMapping("/api/todos/{todoId}")
+    public ResponseEntity<String> deleteTodoItem(@PathVariable Long todoId) {
+        try {
+            toDoService.deleteTodoItem(todoId);
+            return ResponseEntity.noContent().build();
+        } catch (TodoNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
     public void createTodoItem(GetToDoRequest getToDoRequest){
         Todo todo = new Todo();
         todo.setTitle(getToDoRequest.getTitle());
