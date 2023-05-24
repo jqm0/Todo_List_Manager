@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Data
 public class Todo extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     String title;

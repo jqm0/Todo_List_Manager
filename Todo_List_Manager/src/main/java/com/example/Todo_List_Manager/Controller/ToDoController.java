@@ -26,8 +26,8 @@ public class ToDoController {
     }
     public void createTodoItem(){}
     @RequestMapping("api/todos/{todoId}")
-    public GetToDoRespone getTodoItemById(@PathVariable Long itemId){
-        return toDoService.getItemById(itemId);
+    public GetToDoRespone getTodoItemById(@PathVariable Long todoId){
+        return toDoService.getItemById(todoId);
     }
     public void updateTodoItem(){}
     public void deleteTodoItem(){}
