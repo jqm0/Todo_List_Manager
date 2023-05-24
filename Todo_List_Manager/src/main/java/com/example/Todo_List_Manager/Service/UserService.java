@@ -16,22 +16,7 @@ public class UserService {
     public void registerUser(User user) {
         userRepository.save(user);
     }
-    public User getUserById(Long userId) {
-        return null;
-
-    }
-
-    public List<User> getAllUsers() {
-        return null;
-
-    }
-
-    public void updateUser(User user) {
-
-    }
-    public void deleteUser(Long userId) {
-
-    }
+  
 
 
 }

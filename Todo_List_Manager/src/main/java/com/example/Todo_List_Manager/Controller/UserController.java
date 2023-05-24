@@ -22,13 +22,6 @@ public class UserController {
             return ResponseEntity.ok().build();
 
     }
-
-    @GetMapping("/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
-        // Implementation for getting a user by ID API endpoint
-        return null;
-    }
-
     public void createUser(GetUserRequest getUserRequest){
         User user = new User();
         user.setName(getUserRequest.getUserName());
