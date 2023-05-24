@@ -20,7 +20,6 @@ public class UserController {
     public ResponseEntity<Void> saveAccount (@RequestBody GetUserRequest userRequestObject) {
             createUser(userRequestObject);
             return ResponseEntity.ok().build();
-
     }
     public void createUser(GetUserRequest getUserRequest){
         User user = new User();
@@ -31,8 +30,6 @@ public class UserController {
         userService.registerUser(user);
 
     }
-
-
 }
 
 
