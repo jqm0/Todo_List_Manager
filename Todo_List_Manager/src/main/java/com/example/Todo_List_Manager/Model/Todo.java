@@ -16,7 +16,6 @@ public class Todo extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-
     String title;
     String description;
     Boolean completed ;

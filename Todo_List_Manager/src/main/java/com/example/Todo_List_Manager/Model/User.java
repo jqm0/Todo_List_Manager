@@ -15,7 +15,6 @@ public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;
-
     String name ;
     String password;
 
